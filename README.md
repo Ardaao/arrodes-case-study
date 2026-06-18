@@ -5,23 +5,32 @@ Arrodes is a personal multi-agent AI assistant framework designed to bridge the 
 > **Note:** This is a public case study intended for portfolio and architectural review. The production source code remains private to protect sensitive implementation details and security configurations.
 
 ## What is Arrodes?
-Arrodes is not just a wrapper around an LLM; it is a structured system designed to manage cognitive load, persist long-term memory, and interact with the physical and digital world through a set of specialized agents and integrated tools. It transforms the LLM from a chatbot into an autonomous coordinator capable of managing projects, monitoring systems, and executing complex workflows.
+Arrodes is a structured system designed to manage cognitive load, persist long-term memory, and interact with the digital world through specialized agents and integrated tools. It transforms the LLM from a chatbot into a coordinator capable of managing projects, monitoring systems, and executing complex workflows.
+
+## Implementation Scope
+The following represents the verified state of the project:
+* **Core Orchestration:** Fully implemented with a modular service structure.
+* **Agent Logic:** Implemented via specialized roles (e.g., Researcher, Reviewer) with a structured reasoning loop.
+* **Tool Integration:** Implemented using a schema-driven approach with lazy-loading to optimize context.
+* **Memory Systems:** Tiered implementation using PostgreSQL for sessions and ChromaDB for semantic retrieval.
+* **Interfaces:** Operational Telegram gateway and a WebSocket-based Web Dashboard.
+* **Proactivity:** Implemented via a background scheduler for periodic health checks and proactive notifications.
 
 ## Core Features
-* **Multi-Agent Orchestration:** Separation of concerns between different agent roles (e.g., Researcher, Developer, Reviewer) to improve output quality.
+* **Multi-Agent Orchestration:** Separation of concerns between different agent roles to improve output quality and reliability.
 * **Dynamic Tool Calling:** A flexible schema allowing the system to interact with external APIs, local files, and third-party services.
-* **Hierarchical Memory:** A multi-layered approach combining short-term session history, semantic long-term memory, and project-specific context.
+* **Hierarchical Memory:** A multi-layered approach combining short-term session history and semantic long-term memory.
 * **Proactive Workflows:** Scheduled "heartbeat" checks and automated notification systems that allow the assistant to initiate conversations based on state changes.
 * **Omnichannel Interface:** Seamless interaction via a custom Web Dashboard and a Telegram gateway.
 
 ## Architecture Overview
-The system follows a hub-and-spoke microservice approach, utilizing **Redis Streams** for asynchronous communication and **PostgreSQL** for robust state management. This ensures that the orchestration layer remains decoupled from the specific tool implementations.
+The system follows a decoupled microservice approach, utilizing **Redis Pub/Sub** for asynchronous event-driven communication and **PostgreSQL** for robust state management. This ensures that the orchestration layer remains independent of specific tool implementations.
 
 ## Tech Stack
 * **Language:** Python
-* **LLMs:** Multi-provider integration (OpenAI, DeepSeek, etc.)
+* **LLMs:** Multi-provider integration (including OpenAI, DeepSeek, and Google Gemini/Gemma).
 * **Memory & Vector Store:** ChromaDB for semantic retrieval, PostgreSQL for session history.
-* **Messaging & Coordination:** Redis Streams.
+* **Messaging & Coordination:** Redis (Pub/Sub).
 * **Gateways:** Telegram Bot API, WebSocket-based Web UI.
 
 ## Engineering Deep Dives

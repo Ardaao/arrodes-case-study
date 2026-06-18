@@ -27,7 +27,7 @@ To overcome the limitations of context windows, Arrodes implements a tiered memo
 * **Project-specific:** Dedicated context buckets for specific long-term goals.
 
 ### 5. Persistence & Messaging
-* **Redis Streams:** Used as the backbone for asynchronous communication between the core and the gateways.
+* **Redis Pub/Sub:** Used as the event bus for asynchronous communication between the core and the gateways.
 * **PostgreSQL:** The source of truth for user data, session history, and system configurations.
 
 ## Proactive Workflows
