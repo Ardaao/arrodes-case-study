@@ -61,11 +61,15 @@ Detailed design decisions and implementation strategies can be found in the docu
 * [Deployment & Ops](./docs/deployment-and-ops.md) — Local-first constraints and observability.
 * [Lessons Learned](./docs/lessons-learned.md) — Technical tradeoffs and insights.
 
-## Visuals
-*(Placeholders for architectural diagrams and UI screenshots)*
-* **System Architecture:** `assets/diagrams/architecture_diagram.png`
-* **Dashboard Preview:** `assets/screenshots/dashboard_main.png`
-* **Telegram Interaction:** `assets/screenshots/telegram_flow.png`
+## Screenshots
+
+Screenshots are sanitized to avoid exposing local paths, secrets, personal data, private project details, or operational configuration.
+
+### Web Retrieval Tool Demo
+
+This screenshot shows Arrodes loading a web tool group, retrieving the public case-study repository, and summarizing what it verified.
+
+![Arrodes web retrieval tool demo](./assets/screenshots/web-retrieval-demo.png)
 
 ## What I Learned
 Building Arrodes provided deep insights into the challenges of LLM reliability, the necessity of structured memory to avoid context window exhaustion, and the importance of a robust tool-calling validation layer.
