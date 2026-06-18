@@ -24,7 +24,25 @@ The following represents the verified state of the project:
 * **Omnichannel Interface:** Seamless interaction via a custom Web Dashboard and a Telegram gateway.
 
 ## Architecture Overview
-The system follows a decoupled microservice approach, utilizing **Redis Pub/Sub** for asynchronous event-driven communication and **PostgreSQL** for robust state management. This ensures that the orchestration layer remains independent of specific tool implementations.
+The system follows a decoupled service-oriented approach, using **Redis Pub/Sub** for lightweight event-driven communication and **PostgreSQL** for persistent session and state management. This keeps the orchestration layer loosely coupled from interface-specific and tool-specific implementations.
+
+```mermaid
+flowchart TD
+  Web[Web Dashboard] --> Core[Core Orchestrator]
+  Telegram[Telegram Gateway] --> Core
+
+  Core --> Agents[Agent Roles]
+  Core --> Tools[Tool Layer]
+  Core --> Memory[Memory & Retrieval]
+  Core --> Providers[LLM Providers]
+  Core --> Scheduler[Heartbeat Scheduler]
+
+  Memory --> Chroma[ChromaDB Semantic Memory]
+  Memory --> Postgres[PostgreSQL Session History]
+
+  Core --> Redis[Redis Pub/Sub Event Bus]
+  Tools --> External[External APIs / Local Tools]
+```
 
 ## Tech Stack
 * **Language:** Python
